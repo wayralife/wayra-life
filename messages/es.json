@@ -1,0 +1,52 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "shop": "Tienda",
+    "ourStory": "Nuestra historia",
+    "support": "Ayuda",
+    "account": "Cuenta",
+    "cart": "Carrito"
+  },
+  "home": {
+    "heroTitle": "WAYRA — Tradiciones ceremoniales de la Amazonía",
+    "heroSubtitle": "Rapé, hapé, kuripe, tepi, hierbas y artesanía ceremonial, entregados con respeto por su origen.",
+    "shopNow": "Ir a la tienda",
+    "categoriesTitle": "Comprar por categoría",
+    "connectedNote": "Conectado a la base de datos de WAYRA"
+  },
+  "shop": {
+    "title": "Tienda",
+    "allCategories": "Todos los productos",
+    "empty": "Todavía no hay productos aquí — vuelve pronto.",
+    "addToCart": "Añadir al carrito",
+    "viewProduct": "Ver producto",
+    "outOfStock": "Agotado",
+    "sku": "SKU"
+  },
+  "product": {
+    "backToShop": "Volver a la tienda",
+    "quantity": "Cantidad",
+    "addedToCart": "Añadido al carrito",
+    "cartWip": "El pago todavía está en construcción — los productos se guardan en tu carrito para que puedas revisarlos, pero el pago aún no está disponible.",
+    "notFound": "No se encontró este producto."
+  },
+  "cart": {
+    "title": "Tu carrito",
+    "empty": "Tu carrito está vacío.",
+    "browseShop": "Explorar la tienda",
+    "product": "Producto",
+    "price": "Precio",
+    "quantity": "Cantidad",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "remove": "Eliminar",
+    "checkout": "Ir al pago",
+    "checkoutTitle": "Pago",
+    "checkoutPlaceholder": "Los pagos con Stripe irán aquí — Fase 5. Tu carrito está a salvo y no se ha cobrado nada.",
+    "backToCart": "Volver al carrito"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados.",
+    "email": "info@wayra.life"
+  }
+}

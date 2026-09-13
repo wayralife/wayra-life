@@ -1,0 +1,52 @@
+{
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "ourStory": "Our Story",
+    "support": "Support",
+    "account": "Account",
+    "cart": "Cart"
+  },
+  "home": {
+    "heroTitle": "WAYRA — Ceremonial traditions from the Amazon",
+    "heroSubtitle": "Rapé, hapé, kuripe, tepi, herbs and handcrafted ceremonial pieces, brought to you with respect for their origins.",
+    "shopNow": "Shop now",
+    "categoriesTitle": "Shop by category",
+    "connectedNote": "Connected to the WAYRA database"
+  },
+  "shop": {
+    "title": "Shop",
+    "allCategories": "All products",
+    "empty": "There are no products here yet — please check back soon.",
+    "addToCart": "Add to cart",
+    "viewProduct": "View product",
+    "outOfStock": "Out of stock",
+    "sku": "SKU"
+  },
+  "product": {
+    "backToShop": "Back to shop",
+    "quantity": "Quantity",
+    "addedToCart": "Added to cart",
+    "cartWip": "Checkout is still in progress — items are saved to your cart so you can review them, but payment isn't available yet.",
+    "notFound": "This product could not be found."
+  },
+  "cart": {
+    "title": "Your cart",
+    "empty": "Your cart is empty.",
+    "browseShop": "Browse the shop",
+    "product": "Product",
+    "price": "Price",
+    "quantity": "Quantity",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "remove": "Remove",
+    "checkout": "Go to checkout",
+    "checkoutTitle": "Checkout",
+    "checkoutPlaceholder": "Stripe payments will go here — Phase 5. Your cart is safe and nothing has been charged.",
+    "backToCart": "Back to cart"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "email": "info@wayra.life"
+  }
+}
