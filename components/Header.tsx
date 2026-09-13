@@ -21,12 +21,13 @@ export default function Header() {
             alt="WAYRA.life"
             width={160}
             height={160}
-            className="h-14 w-14 object-contain"
+            className="h-24 w-24 object-contain"
             priority
           />
         </Link>
 
         <nav className="flex flex-wrap items-center gap-5 text-sm">
+          <Link href="/">{t("home")}</Link>
           <Link href="/shop">{t("shop")}</Link>
           <Link href="/our-story">{t("ourStory")}</Link>
           <Link href="/support">{t("support")}</Link>
