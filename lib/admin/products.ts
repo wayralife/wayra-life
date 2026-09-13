@@ -43,9 +43,7 @@ export interface AdminCategoryOption {
   name: string;
 }
 
-export async function getAdminCategoryOptions(): Promise
-  AdminCategoryOption[]
-> {
+export async function getAdminCategoryOptions(): Promise<AdminCategoryOption[]> {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("categories")
