@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useCart } from "@/lib/cart-context";
@@ -38,12 +37,13 @@ export default function CartPage() {
               >
                 <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded bg-black/5">
                   {item.imageUrl ? (
-                    <Image
+                    // Plain img, not next/image: product photos can be
+                    // added by the admin from any URL.
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
                       src={item.imageUrl}
                       alt={item.name}
-                      fill
-                      sizes="64px"
-                      className="object-cover"
+                      className="absolute inset-0 h-full w-full object-cover"
                     />
                   ) : null}
                 </div>

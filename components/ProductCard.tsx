@@ -1,5 +1,4 @@
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import type { ShopProduct } from "@/lib/products";
 import { formatGBP } from "@/lib/format";
@@ -17,12 +16,14 @@ export default function ProductCard({ product }: { product: ShopProduct }) {
     >
       <div className="relative aspect-square w-full bg-black/5">
         {product.imageUrl ? (
-          <Image
+          // Plain img, not next/image: product photos can be added by the
+          // admin from any URL, and next/image requires each host to be
+          // allow-listed in next.config.ts ahead of time.
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
             src={product.imageUrl}
             alt={product.imageAlt ?? product.name}
-            fill
-            sizes="(min-width: 768px) 25vw, 50vw"
-            className="object-cover transition group-hover:scale-105"
+            className="absolute inset-0 h-full w-full object-cover transition group-hover:scale-105"
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center text-xs text-black/40">

@@ -1,13 +1,7 @@
+import { Link } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/server";
 
-const SECTIONS = [
-  "Products",
-  "Categories",
-  "Orders",
-  "Customers",
-  "Content",
-  "Settings",
-];
+const COMING_LATER = ["Orders", "Customers", "Content", "Settings"];
 
 export default async function AdminPage() {
   const supabase = await createClient();
@@ -22,6 +16,26 @@ export default async function AdminPage() {
       <h1 className="text-3xl font-semibold">Admin</h1>
 
       <section className="mt-8">
+        <h2 className="mb-3 text-lg font-medium">Zarządzanie</h2>
+        <div className="grid grid-cols-2 gap-3">
+          <Link
+            href="/admin/products"
+            className="rounded-md border border-black/10 p-4 transition hover:border-black/30 hover:shadow-sm"
+          >
+            Products
+          </Link>
+          {COMING_LATER.map((section) => (
+            <span
+              key={section}
+              className="rounded-md border border-black/10 p-4 text-black/40"
+            >
+              {section} (wkrótce)
+            </span>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-10">
         <h2 className="mb-3 text-lg font-medium">Recent support messages</h2>
         {!tickets || tickets.length === 0 ? (
           <p className="text-black/50">No messages yet.</p>
@@ -50,20 +64,6 @@ export default async function AdminPage() {
             ))}
           </ul>
         )}
-      </section>
-
-      <section className="mt-10">
-        <h2 className="mb-3 text-lg font-medium">Coming in later phases</h2>
-        <ul className="grid grid-cols-2 gap-3">
-          {SECTIONS.map((section) => (
-            <li
-              key={section}
-              className="rounded-md border border-black/10 p-4 text-black/60"
-            >
-              {section}
-            </li>
-          ))}
-        </ul>
       </section>
     </div>
   );
