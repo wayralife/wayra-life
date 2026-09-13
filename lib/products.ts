@@ -1,145 +1,53 @@
 import { createClient } from "@/lib/supabase/server";
+import { routing } from "@/i18n/routing";
 
-export interface ShopProduct {
+export interface AdminProductListItem {
   id: string;
-  slug: string;
   sku: string;
+  slug: string;
   price: number;
-  salePrice: number | null;
-  onSale: boolean;
-  stockQty: number;
-  categoryId: string | null;
-  categorySlug: string | null;
+  stock_qty: number;
+  status: string;
   name: string;
-  description: string | null;
-  imageUrl: string | null;
-  imageAlt: string | null;
 }
 
-/**
- * Loads active products (optionally filtered by category slug), joined with
- * their translation for the current locale (falling back to English) and
- * their first image.
- */
-export async function getShopProducts(
-  locale: string,
-  categorySlug?: string
-): Promise<ShopProduct[]> {
+export async function getAdminProducts(): Promise<AdminProductListItem[]> {
   const supabase = await createClient();
-
-  let categoryId: string | undefined;
-  if (categorySlug) {
-    const { data: category } = await supabase
-      .from("categories")
-      .select("id")
-      .eq("slug", categorySlug)
-      .maybeSingle();
-    if (!category) return [];
-    categoryId = category.id;
-  }
-
-  let query = supabase
+  const { data, error } = await supabase
     .from("products")
     .select(
-      "id, slug, sku, price, sale_price, on_sale, stock_qty, category_id, categories(slug), product_translations(locale, name, description), product_images(url, alt_text, sort_order)"
+      "id, sku, slug, price, stock_qty, status, product_translations(locale, name)"
     )
-    .eq("status", "active")
     .order("created_at", { ascending: false });
 
-  if (categoryId) {
-    query = query.eq("category_id", categoryId);
-  }
-
-  const { data, error } = await query;
   if (error || !data) return [];
 
   return data.map((row: any) => {
     const translations: any[] = row.product_translations ?? [];
     const translation =
-      translations.find((t) => t.locale === locale) ??
-      translations.find((t) => t.locale === "en") ??
-      translations[0];
-
-    const images: any[] = [...(row.product_images ?? [])].sort(
-      (a, b) => a.sort_order - b.sort_order
-    );
-    const firstImage = images[0];
-
+      translations.find((t) => t.locale === "en") ?? translations[0];
     return {
       id: row.id,
-      slug: row.slug,
       sku: row.sku,
+      slug: row.slug,
       price: Number(row.price),
-      salePrice: row.sale_price ? Number(row.sale_price) : null,
-      onSale: row.on_sale,
-      stockQty: row.stock_qty,
-      categoryId: row.category_id,
-      categorySlug: row.categories?.slug ?? null,
+      stock_qty: row.stock_qty,
+      status: row.status,
       name: translation?.name ?? row.slug,
-      description: translation?.description ?? null,
-      imageUrl: firstImage?.url ?? null,
-      imageAlt: firstImage?.alt_text ?? null,
     };
   });
 }
 
-export async function getShopProductBySlug(
-  locale: string,
-  slug: string
-): Promise<ShopProduct | null> {
-  const supabase = await createClient();
-
-  const { data, error } = await supabase
-    .from("products")
-    .select(
-      "id, slug, sku, price, sale_price, on_sale, stock_qty, category_id, categories(slug), product_translations(locale, name, description), product_images(url, alt_text, sort_order)"
-    )
-    .eq("slug", slug)
-    .eq("status", "active")
-    .maybeSingle();
-
-  if (error || !data) return null;
-
-  const row: any = data;
-  const translations: any[] = row.product_translations ?? [];
-  const translation =
-    translations.find((t) => t.locale === locale) ??
-    translations.find((t) => t.locale === "en") ??
-    translations[0];
-
-  const images: any[] = [...(row.product_images ?? [])].sort(
-    (a, b) => a.sort_order - b.sort_order
-  );
-
-  return {
-    id: row.id,
-    slug: row.slug,
-    sku: row.sku,
-    price: Number(row.price),
-    salePrice: row.sale_price ? Number(row.sale_price) : null,
-    onSale: row.on_sale,
-    stockQty: row.stock_qty,
-    categoryId: row.category_id,
-    categorySlug: row.categories?.slug ?? null,
-    name: translation?.name ?? row.slug,
-    description: translation?.description ?? null,
-    imageUrl: images[0]?.url ?? null,
-    imageAlt: images[0]?.alt_text ?? null,
-  };
-}
-
-export interface ShopCategory {
+export interface AdminCategoryOption {
   id: string;
-  slug: string;
   name: string;
 }
 
-export async function getShopCategories(locale: string): Promise<ShopCategory[]> {
+export async function getAdminCategoryOptions(): Promise<AdminCategoryOption[]> {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("categories")
-    .select("id, slug, sort_order, category_translations(locale, name)")
-    .eq("visible", true)
+    .select("id, sort_order, category_translations(locale, name)")
     .order("sort_order");
 
   if (error || !data) return [];
@@ -147,9 +55,74 @@ export async function getShopCategories(locale: string): Promise<ShopCategory[]>
   return data.map((row: any) => {
     const translations: any[] = row.category_translations ?? [];
     const translation =
-      translations.find((t) => t.locale === locale) ??
-      translations.find((t) => t.locale === "en") ??
-      translations[0];
-    return { id: row.id, slug: row.slug, name: translation?.name ?? row.slug };
+      translations.find((t) => t.locale === "en") ?? translations[0];
+    return { id: row.id, name: translation?.name ?? row.id };
   });
+}
+
+export interface AdminProductDetail {
+  id: string;
+  sku: string;
+  slug: string;
+  price: number;
+  sale_price: number | null;
+  on_sale: boolean;
+  stock_qty: number;
+  status: string;
+  featured: boolean;
+  category_id: string | null;
+  translations: Record<string, { name: string; description: string }>;
+  images: { id: string; url: string; alt_text: string; sort_order: number }[];
+}
+
+export async function getAdminProduct(
+  id: string
+): Promise<AdminProductDetail | null> {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("products")
+    .select(
+      "id, sku, slug, price, sale_price, on_sale, stock_qty, status, featured, category_id, product_translations(locale, name, description), product_images(id, url, alt_text, sort_order)"
+    )
+    .eq("id", id)
+    .maybeSingle();
+
+  if (error || !data) return null;
+
+  const row: any = data;
+  const translations: Record<string, { name: string; description: string }> =
+    {};
+  for (const locale of routing.locales) {
+    const t = (row.product_translations ?? []).find(
+      (tr: any) => tr.locale === locale
+    );
+    translations[locale] = {
+      name: t?.name ?? "",
+      description: t?.description ?? "",
+    };
+  }
+
+  const images = [...(row.product_images ?? [])].sort(
+    (a: any, b: any) => a.sort_order - b.sort_order
+  );
+
+  return {
+    id: row.id,
+    sku: row.sku,
+    slug: row.slug,
+    price: Number(row.price),
+    sale_price: row.sale_price != null ? Number(row.sale_price) : null,
+    on_sale: row.on_sale,
+    stock_qty: row.stock_qty,
+    status: row.status,
+    featured: row.featured,
+    category_id: row.category_id,
+    translations,
+    images: images.map((img: any) => ({
+      id: img.id,
+      url: img.url,
+      alt_text: img.alt_text ?? "",
+      sort_order: img.sort_order,
+    })),
+  };
 }
