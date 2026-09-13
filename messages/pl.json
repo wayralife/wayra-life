@@ -27,7 +27,7 @@
     "backToShop": "Wróć do sklepu",
     "quantity": "Ilość",
     "addedToCart": "Dodano do koszyka",
-    "cartWip": "Płatności są jeszcze w budowie — produkty zapisują się w koszyku, żebyś mógł je przejrzeć, ale płatność nie jest jeszcze dostępna.",
+    "cartWip": "Płatności działają obecnie w trybie testowym — żadne prawdziwe pieniądze nie są jeszcze pobierane.",
     "notFound": "Nie znaleziono tego produktu."
   },
   "cart": {
@@ -42,7 +42,12 @@
     "remove": "Usuń",
     "checkout": "Przejdź do płatności",
     "checkoutTitle": "Płatność",
-    "checkoutPlaceholder": "Płatności Stripe będą tutaj — Faza 5. Twój koszyk jest bezpieczny i nic nie zostało jeszcze pobrane.",
+    "checkoutError": "Coś poszło nie tak przy rozpoczynaniu płatności — spróbuj ponownie.",
+    "payWithCard": "Zapłać kartą",
+    "redirecting": "Przekierowywanie do bezpiecznej płatności…",
+    "testModeNote": "Tryb testowy — użyj numeru karty 4242 4242 4242 4242, dowolnej przyszłej daty i dowolnego 3-cyfrowego CVC. Żadne prawdziwe pieniądze nie zostaną pobrane.",
+    "successTitle": "Dziękujemy za zamówienie!",
+    "successBody": "Twoja płatność się powiodła. Otrzymaliśmy Twoje zamówienie i skontaktujemy się w sprawie wysyłki.",
     "backToCart": "Wróć do koszyka"
   },
   "support": {

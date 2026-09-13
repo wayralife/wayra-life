@@ -27,7 +27,7 @@
     "backToShop": "Volver a la tienda",
     "quantity": "Cantidad",
     "addedToCart": "Añadido al carrito",
-    "cartWip": "El pago todavía está en construcción — los productos se guardan en tu carrito para que puedas revisarlos, pero el pago aún no está disponible.",
+    "cartWip": "Los pagos están actualmente en modo de prueba — todavía no se realiza ningún cobro real.",
     "notFound": "No se encontró este producto."
   },
   "cart": {
@@ -42,7 +42,12 @@
     "remove": "Eliminar",
     "checkout": "Ir al pago",
     "checkoutTitle": "Pago",
-    "checkoutPlaceholder": "Los pagos con Stripe irán aquí — Fase 5. Tu carrito está a salvo y no se ha cobrado nada.",
+    "checkoutError": "Algo salió mal al iniciar el pago — inténtalo de nuevo.",
+    "payWithCard": "Pagar con tarjeta",
+    "redirecting": "Redirigiendo al pago seguro…",
+    "testModeNote": "Modo de prueba — usa el número de tarjeta 4242 4242 4242 4242, cualquier fecha futura y cualquier CVC de 3 dígitos. No se cobra dinero real.",
+    "successTitle": "¡Gracias por tu pedido!",
+    "successBody": "Tu pago se realizó correctamente. Hemos recibido tu pedido y nos pondremos en contacto sobre el envío.",
     "backToCart": "Volver al carrito"
   },
   "support": {

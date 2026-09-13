@@ -27,7 +27,7 @@
     "backToShop": "Back to shop",
     "quantity": "Quantity",
     "addedToCart": "Added to cart",
-    "cartWip": "Checkout is still in progress — items are saved to your cart so you can review them, but payment isn't available yet.",
+    "cartWip": "Payments are currently in test mode — no real charges are made yet.",
     "notFound": "This product could not be found."
   },
   "cart": {
@@ -42,7 +42,12 @@
     "remove": "Remove",
     "checkout": "Go to checkout",
     "checkoutTitle": "Checkout",
-    "checkoutPlaceholder": "Stripe payments will go here — Phase 5. Your cart is safe and nothing has been charged.",
+    "checkoutError": "Something went wrong starting checkout — please try again.",
+    "payWithCard": "Pay with card",
+    "redirecting": "Redirecting to secure payment…",
+    "testModeNote": "Test mode — use card number 4242 4242 4242 4242, any future date and any 3-digit CVC. No real money is charged.",
+    "successTitle": "Thank you for your order!",
+    "successBody": "Your payment was successful. We've received your order and will be in touch about shipping.",
     "backToCart": "Back to cart"
   },
   "support": {
