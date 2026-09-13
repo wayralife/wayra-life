@@ -58,6 +58,19 @@
     "errorGeneric": "Something went wrong sending your message — please try again, or email us directly.",
     "emailNote": "You can also reach us directly at"
   },
+  "login": {
+    "signInTitle": "Admin sign in",
+    "signUpTitle": "Create admin account",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "signIn": "Sign in",
+    "signUp": "Create account",
+    "pleaseWait": "Please wait…",
+    "switchToSignUp": "Need an account? Create one",
+    "switchToSignIn": "Already have an account? Sign in",
+    "signUpSuccess": "Account created. Check your email if confirmation is required, then sign in.",
+    "signOut": "Sign out"
+  },
   "footer": {
     "rights": "All rights reserved.",
     "email": "info@wayra.life"

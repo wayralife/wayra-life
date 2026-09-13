@@ -58,6 +58,19 @@
     "errorGeneric": "Coś poszło nie tak przy wysyłaniu wiadomości — spróbuj ponownie albo napisz do nas bezpośrednio.",
     "emailNote": "Możesz też napisać bezpośrednio na"
   },
+  "login": {
+    "signInTitle": "Logowanie administratora",
+    "signUpTitle": "Utwórz konto administratora",
+    "emailLabel": "Email",
+    "passwordLabel": "Hasło",
+    "signIn": "Zaloguj się",
+    "signUp": "Utwórz konto",
+    "pleaseWait": "Chwileczkę…",
+    "switchToSignUp": "Nie masz konta? Utwórz je",
+    "switchToSignIn": "Masz już konto? Zaloguj się",
+    "signUpSuccess": "Konto utworzone. Jeśli wymagane jest potwierdzenie, sprawdź e-mail, a potem się zaloguj.",
+    "signOut": "Wyloguj się"
+  },
   "footer": {
     "rights": "Wszelkie prawa zastrzeżone.",
     "email": "info@wayra.life"
