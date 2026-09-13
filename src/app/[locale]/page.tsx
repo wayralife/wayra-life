@@ -57,6 +57,12 @@ export default async function HomePage() {
           {error ? t("connectionError") : t("connectionOk")}
         </p>
 
+        {error ? (
+          <pre className="mt-2 whitespace-pre-wrap rounded bg-red-50 p-3 text-xs text-red-700">
+            DEBUG: {JSON.stringify(error, null, 2)}
+          </pre>
+        ) : null}
+
         {categories && categories.length > 0 ? (
           <ul className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
             {categories.map((category) => (
