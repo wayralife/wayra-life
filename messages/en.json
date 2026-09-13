@@ -45,6 +45,19 @@
     "checkoutPlaceholder": "Stripe payments will go here — Phase 5. Your cart is safe and nothing has been charged.",
     "backToCart": "Back to cart"
   },
+  "support": {
+    "title": "Got questions? Send us a message",
+    "intro": "We'd love to hear from you! Send us a message using the form, or email us.",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "messageLabel": "Message",
+    "submit": "Submit",
+    "sending": "Sending…",
+    "success": "Thanks — your message has been sent. We'll get back to you at the email address you provided.",
+    "errorInvalidEmail": "Please enter a valid email address.",
+    "errorGeneric": "Something went wrong sending your message — please try again, or email us directly.",
+    "emailNote": "You can also reach us directly at"
+  },
   "footer": {
     "rights": "All rights reserved.",
     "email": "info@wayra.life"

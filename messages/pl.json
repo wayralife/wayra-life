@@ -45,6 +45,19 @@
     "checkoutPlaceholder": "Płatności Stripe będą tutaj — Faza 5. Twój koszyk jest bezpieczny i nic nie zostało jeszcze pobrane.",
     "backToCart": "Wróć do koszyka"
   },
+  "support": {
+    "title": "Masz pytania? Napisz do nas",
+    "intro": "Chętnie Cię wysłuchamy! Wyślij wiadomość przez formularz albo napisz do nas e-mailem.",
+    "nameLabel": "Imię i nazwisko",
+    "emailLabel": "Email",
+    "messageLabel": "Wiadomość",
+    "submit": "Wyślij",
+    "sending": "Wysyłanie…",
+    "success": "Dziękujemy — Twoja wiadomość została wysłana. Odpowiemy na podany adres e-mail.",
+    "errorInvalidEmail": "Podaj prawidłowy adres e-mail.",
+    "errorGeneric": "Coś poszło nie tak przy wysyłaniu wiadomości — spróbuj ponownie albo napisz do nas bezpośrednio.",
+    "emailNote": "Możesz też napisać bezpośrednio na"
+  },
   "footer": {
     "rights": "Wszelkie prawa zastrzeżone.",
     "email": "info@wayra.life"
