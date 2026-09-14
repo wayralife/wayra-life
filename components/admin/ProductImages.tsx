@@ -110,7 +110,7 @@ export default function ProductImages({
             accept="image/*"
             onChange={handleFile}
             disabled={isUploading || isPending}
-            className="text-sm"
+            className="block w-full text-sm text-black/70 file:mr-4 file:cursor-pointer file:rounded-md file:border-0 file:bg-black file:px-4 file:py-2 file:text-sm file:font-medium file:text-white hover:file:bg-black/80 disabled:file:cursor-not-allowed disabled:file:opacity-40"
           />
           {isUploading && (
             <span className="text-xs text-black/50">Wgrywanie…</span>
