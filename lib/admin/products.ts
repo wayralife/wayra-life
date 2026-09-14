@@ -8,6 +8,7 @@ export interface AdminProductListItem {
   price: number;
   stock_qty: number;
   status: string;
+  sort_order: number;
   name: string;
 }
 
@@ -16,8 +17,9 @@ export async function getAdminProducts(): Promise<AdminProductListItem[]> {
   const { data, error } = await supabase
     .from("products")
     .select(
-      "id, sku, slug, price, stock_qty, status, product_translations(locale, name)"
+      "id, sku, slug, price, stock_qty, status, sort_order, product_translations(locale, name)"
     )
+    .order("sort_order")
     .order("created_at", { ascending: false });
 
   if (error || !data) return [];
@@ -33,6 +35,7 @@ export async function getAdminProducts(): Promise<AdminProductListItem[]> {
       price: Number(row.price),
       stock_qty: row.stock_qty,
       status: row.status,
+      sort_order: row.sort_order,
       name: translation?.name ?? row.slug,
     };
   });
@@ -71,6 +74,7 @@ export interface AdminProductDetail {
   status: string;
   featured: boolean;
   category_id: string | null;
+  sort_order: number;
   translations: Record<string, { name: string; description: string }>;
   images: { id: string; url: string; alt_text: string; sort_order: number }[];
 }
@@ -82,7 +86,7 @@ export async function getAdminProduct(
   const { data, error } = await supabase
     .from("products")
     .select(
-      "id, sku, slug, price, sale_price, on_sale, stock_qty, status, featured, category_id, product_translations(locale, name, description), product_images(id, url, alt_text, sort_order)"
+      "id, sku, slug, price, sale_price, on_sale, stock_qty, status, featured, category_id, sort_order, product_translations(locale, name, description), product_images(id, url, alt_text, sort_order)"
     )
     .eq("id", id)
     .maybeSingle();
@@ -117,6 +121,7 @@ export async function getAdminProduct(
     status: row.status,
     featured: row.featured,
     category_id: row.category_id,
+    sort_order: row.sort_order,
     translations,
     images: images.map((img: any) => ({
       id: img.id,

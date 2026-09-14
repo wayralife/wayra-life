@@ -102,6 +102,17 @@ export default function ProductForm({
           />
         </div>
         <div>
+          <label className="mb-1 block text-sm font-medium">
+            Kolejność w sklepie (mniejsza liczba = wyżej)
+          </label>
+          <input
+            name="sort_order"
+            type="number"
+            defaultValue={product?.sort_order ?? 0}
+            className="w-full rounded-md border border-black/20 px-3 py-2"
+          />
+        </div>
+        <div>
           <label className="mb-1 block text-sm font-medium">Status</label>
           <select
             name="status"

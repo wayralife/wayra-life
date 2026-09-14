@@ -1,7 +1,14 @@
 import { Link } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/server";
 
-const COMING_LATER = ["Orders", "Customers", "Content", "Settings"];
+const MANAGEMENT_LINKS = [
+  { href: "/admin/products", label: "Products" },
+  { href: "/admin/categories", label: "Categories" },
+  { href: "/admin/content/home", label: "Home page content" },
+  { href: "/admin/content/our-story", label: "Our Story content" },
+];
+
+const COMING_LATER = ["Orders", "Customers", "Settings"];
 
 export default async function AdminPage() {
   const supabase = await createClient();
@@ -18,12 +25,15 @@ export default async function AdminPage() {
       <section className="mt-8">
         <h2 className="mb-3 text-lg font-medium">Zarządzanie</h2>
         <div className="grid grid-cols-2 gap-3">
-          <Link
-            href="/admin/products"
-            className="rounded-md border border-black/10 p-4 transition hover:border-black/30 hover:shadow-sm"
-          >
-            Products
-          </Link>
+          {MANAGEMENT_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="rounded-md border border-black/10 p-4 transition hover:border-black/30 hover:shadow-sm"
+            >
+              {link.label}
+            </Link>
+          ))}
           {COMING_LATER.map((section) => (
             <span
               key={section}

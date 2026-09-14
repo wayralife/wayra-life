@@ -44,6 +44,7 @@ export async function getShopProducts(
       "id, slug, sku, price, sale_price, on_sale, stock_qty, category_id, categories(slug), product_translations(locale, name, description), product_images(url, alt_text, sort_order)"
     )
     .eq("status", "active")
+    .order("sort_order")
     .order("created_at", { ascending: false });
 
   if (categoryId) {

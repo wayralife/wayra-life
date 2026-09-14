@@ -40,6 +40,7 @@ function readCoreFields(formData: FormData) {
     status: String(formData.get("status") ?? "draft"),
     featured: formData.get("featured") === "on",
     category_id: String(formData.get("category_id") ?? "") || null,
+    sort_order: Number(formData.get("sort_order") ?? 0),
   };
 }
 
@@ -169,4 +170,11 @@ export async function removeProductImage(imageId: string) {
   await supabase.from("product_images").delete().eq("id", imageId);
   revalidatePath("/[locale]/admin/products/[id]", "page");
   revalidatePath("/[locale]/shop/[slug]", "page");
+}
+
+export async function deleteProduct(productId: string) {
+  const supabase = await requireAdmin();
+  await supabase.from("products").delete().eq("id", productId);
+  revalidatePath("/[locale]/admin/products", "page");
+  revalidatePath("/[locale]/shop", "page");
 }
