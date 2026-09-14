@@ -6,9 +6,9 @@ import ContentBlockForm, {
 } from "@/components/admin/ContentBlockForm";
 
 const FIELDS: ContentFieldConfig[] = [
+  { name: "heroImageUrl", label: "Zdjęcie w tle (opcjonalnie)", type: "image" },
   { name: "heroTitle", label: "Tytuł (duży nagłówek)", type: "text" },
   { name: "heroSubtitle", label: "Podtytuł", type: "textarea" },
-  { name: "heroImageUrl", label: "Zdjęcie w tle (URL, opcjonalnie)", type: "url" },
   { name: "ctaLabel", label: "Tekst przycisku", type: "text" },
   { name: "ctaUrl", label: "Link przycisku (np. /shop)", type: "text" },
 ];
@@ -18,7 +18,7 @@ export default async function AdminHomeContentPage() {
   const boundSave = saveContentBlock.bind(
     null,
     "home_hero",
-    FIELDS.map((f) => f.name)
+    FIELDS.map((f) => ({ name: f.name, shared: f.type === "image" }))
   );
 
   return (

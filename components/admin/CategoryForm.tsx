@@ -4,6 +4,8 @@ import { useActionState, useEffect } from "react";
 import { useRouter } from "@/i18n/navigation";
 import type { CategoryFormState } from "@/app/[locale]/admin/categories/actions";
 import type { AdminCategoryDetail } from "@/lib/admin/categories";
+import AutoTranslateButton from "@/components/admin/AutoTranslateButton";
+import ImageUploadField from "@/components/admin/ImageUploadField";
 
 const LOCALES = [
   { code: "en", label: "English" },
@@ -59,15 +61,10 @@ export default function CategoryForm({
           />
         </div>
         <div className="sm:col-span-2">
-          <label className="mb-1 block text-sm font-medium">
-            URL zdjęcia kategorii (opcjonalnie)
-          </label>
-          <input
+          <ImageUploadField
             name="image_url"
-            type="url"
+            label="Zdjęcie kategorii (opcjonalnie)"
             defaultValue={category?.image_url ?? ""}
-            placeholder="https://..."
-            className="w-full rounded-md border border-black/20 px-3 py-2"
           />
         </div>
         <label className="flex items-center gap-2 text-sm">
@@ -81,7 +78,10 @@ export default function CategoryForm({
       </section>
 
       <section className="flex flex-col gap-6">
-        <h2 className="text-lg font-medium">Tłumaczenia</h2>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h2 className="text-lg font-medium">Tłumaczenia</h2>
+          <AutoTranslateButton fields={["name", "description"]} />
+        </div>
         {LOCALES.map((locale) => (
           <div
             key={locale.code}

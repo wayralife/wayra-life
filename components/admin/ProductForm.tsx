@@ -4,6 +4,7 @@ import { useActionState, useEffect } from "react";
 import { useRouter } from "@/i18n/navigation";
 import type { ProductFormState } from "@/app/[locale]/admin/products/actions";
 import type { AdminCategoryOption, AdminProductDetail } from "@/lib/admin/products";
+import AutoTranslateButton from "@/components/admin/AutoTranslateButton";
 
 const LOCALES = [
   { code: "en", label: "English" },
@@ -160,7 +161,10 @@ export default function ProductForm({
       </section>
 
       <section className="flex flex-col gap-6">
-        <h2 className="text-lg font-medium">Tłumaczenia</h2>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h2 className="text-lg font-medium">Tłumaczenia</h2>
+          <AutoTranslateButton fields={["name", "description"]} />
+        </div>
         {LOCALES.map((locale) => (
           <div
             key={locale.code}

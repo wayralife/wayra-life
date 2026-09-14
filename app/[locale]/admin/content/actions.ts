@@ -9,6 +9,14 @@ export interface ContentFormState {
   message?: string;
 }
 
+export interface ContentBlockFieldSpec {
+  name: string;
+  /** Shared fields (images) are submitted once, without a locale suffix,
+   * and copied into every locale's JSON. Everything else is submitted as
+   * `${name}_${locale}` and stored per-locale. */
+  shared?: boolean;
+}
+
 async function requireAdmin() {
   const supabase = await createClient();
   const {
@@ -27,14 +35,14 @@ async function requireAdmin() {
 }
 
 /**
- * Generic save for a content block: for each locale, reads
- * `${field}_${locale}` out of the form and upserts one row of JSON.
- * `fields` lists the field names used for THIS block (they differ
- * between the homepage hero and Our Story, for example).
+ * Generic save for a content block. `fields` lists every field used by
+ * this block (they differ between the homepage hero and Our Story, for
+ * example) — shared fields (images) come from a single form input,
+ * everything else is read per-locale as `${field}_${locale}`.
  */
 export async function saveContentBlock(
   key: string,
-  fields: string[],
+  fields: ContentBlockFieldSpec[],
   _prevState: ContentFormState,
   formData: FormData
 ): Promise<ContentFormState> {
@@ -45,18 +53,25 @@ export async function saveContentBlock(
     return { status: "error", message: "not_authorized" };
   }
 
+  const sharedValues: Record<string, string> = {};
+  for (const field of fields) {
+    if (field.shared) {
+      sharedValues[field.name] = String(formData.get(field.name) ?? "");
+    }
+  }
+
   for (const locale of routing.locales) {
-    const body_json: Record<string, string> = {};
+    const body_json: Record<string, string> = { ...sharedValues };
     for (const field of fields) {
-      body_json[field] = String(formData.get(`${field}_${locale}`) ?? "");
+      if (field.shared) continue;
+      body_json[field.name] = String(
+        formData.get(`${field.name}_${locale}`) ?? ""
+      );
     }
 
     const { error } = await supabase
       .from("content_blocks")
-      .upsert(
-        { key, locale, body_json },
-        { onConflict: "key,locale" }
-      );
+      .upsert({ key, locale, body_json }, { onConflict: "key,locale" });
 
     if (error) {
       return { status: "error", message: error.message };

@@ -6,9 +6,9 @@ import ContentBlockForm, {
 } from "@/components/admin/ContentBlockForm";
 
 const FIELDS: ContentFieldConfig[] = [
+  { name: "imageUrl", label: "Zdjęcie (opcjonalnie)", type: "image" },
   { name: "title", label: "Tytuł strony", type: "text" },
   { name: "body", label: "Treść (każdy akapit w nowej linii)", type: "textarea" },
-  { name: "imageUrl", label: "Zdjęcie (URL, opcjonalnie)", type: "url" },
 ];
 
 export default async function AdminOurStoryContentPage() {
@@ -16,7 +16,7 @@ export default async function AdminOurStoryContentPage() {
   const boundSave = saveContentBlock.bind(
     null,
     "our_story",
-    FIELDS.map((f) => f.name)
+    FIELDS.map((f) => ({ name: f.name, shared: f.type === "image" }))
   );
 
   return (
