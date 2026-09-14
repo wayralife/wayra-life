@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { stripe } from "@/lib/stripe";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { sendEmail } from "@/lib/email";
+import { orderConfirmationEmail } from "@/lib/email-templates";
 
 // The Stripe SDK (and signature verification against the raw body) needs
 // the Node.js runtime, not the Edge runtime.
@@ -119,6 +121,23 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   });
 
   await supabase.from("order_items").insert(orderItems);
+
+  // Best-effort order confirmation email — never blocks order creation
+  // if it fails (see lib/email.ts).
+  const locale = session.metadata?.locale ?? "en";
+  const { subject, html } = orderConfirmationEmail(locale, {
+    orderId: order.id,
+    items: orderItems.map((item) => ({
+      name: item.name_snapshot,
+      qty: item.qty,
+      unitPrice: Number(item.unit_price),
+    })),
+    subtotal,
+    shipping: shippingCost,
+    total,
+    currency: (session.currency ?? "gbp").toUpperCase(),
+  });
+  await sendEmail({ to: email, subject, html });
 
   await supabase.from("payments").insert({
     order_id: order.id,

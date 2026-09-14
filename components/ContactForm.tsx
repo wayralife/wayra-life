@@ -1,13 +1,14 @@
 "use client";
 
 import { useActionState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { submitSupportTicket, type SupportFormState } from "@/app/[locale]/support/actions";
 
 const initialState: SupportFormState = { status: "idle" };
 
 export default function ContactForm() {
   const t = useTranslations("support");
+  const locale = useLocale();
   const [state, formAction, isPending] = useActionState(
     submitSupportTicket,
     initialState
@@ -23,6 +24,7 @@ export default function ContactForm() {
 
   return (
     <form action={formAction} className="flex flex-col gap-5">
+      <input type="hidden" name="locale" value={locale} />
       <div>
         <label htmlFor="name" className="mb-1 block text-sm font-medium">
           {t("nameLabel")} <span className="text-red-600">*</span>

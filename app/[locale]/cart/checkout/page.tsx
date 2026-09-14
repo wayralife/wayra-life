@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useCart } from "@/lib/cart-context";
 import { createCheckoutSession } from "./actions";
@@ -9,6 +9,7 @@ import { formatGBP } from "@/lib/format";
 
 export default function CheckoutPage() {
   const t = useTranslations("cart");
+  const locale = useLocale();
   const { items, isLoaded, totalPrice } = useCart();
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -17,7 +18,8 @@ export default function CheckoutPage() {
     setError(null);
     setIsPending(true);
     const result = await createCheckoutSession(
-      items.map((i) => ({ productId: i.productId, quantity: i.quantity }))
+      items.map((i) => ({ productId: i.productId, quantity: i.quantity })),
+      locale
     );
     if (result.error || !result.url) {
       setIsPending(false);

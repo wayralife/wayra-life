@@ -1,6 +1,11 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
+import { sendEmail } from "@/lib/email";
+import {
+  supportTicketAdminNotification,
+  supportTicketCustomerAck,
+} from "@/lib/email-templates";
 
 export interface SupportFormState {
   status: "idle" | "success" | "error";
@@ -14,6 +19,7 @@ export async function submitSupportTicket(
   const name = String(formData.get("name") ?? "").trim();
   const email = String(formData.get("email") ?? "").trim();
   const message = String(formData.get("message") ?? "").trim();
+  const locale = String(formData.get("locale") ?? "en").trim();
 
   if (!name || !email || !message) {
     return { status: "error", message: "missing_fields" };
@@ -35,6 +41,32 @@ export async function submitSupportTicket(
   if (error) {
     return { status: "error", message: "server_error" };
   }
+
+  // Best-effort notifications — never block the ticket from being saved
+  // if either email fails to send (see lib/email.ts).
+  const adminEmail = process.env.ADMIN_EMAIL;
+  if (adminEmail) {
+    const adminNotification = supportTicketAdminNotification({
+      name,
+      email,
+      message,
+    });
+    await sendEmail({
+      to: adminEmail,
+      subject: adminNotification.subject,
+      html: adminNotification.html,
+      replyTo: email,
+    });
+  } else {
+    console.error("ADMIN_EMAIL not set — skipped support ticket notification");
+  }
+
+  const customerAck = supportTicketCustomerAck(locale);
+  await sendEmail({
+    to: email,
+    subject: customerAck.subject,
+    html: customerAck.html,
+  });
 
   return { status: "success" };
 }

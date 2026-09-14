@@ -21,7 +21,8 @@ export interface CheckoutResult {
  * metadata so the webhook can rebuild the order after payment succeeds.
  */
 export async function createCheckoutSession(
-  items: CheckoutCartItem[]
+  items: CheckoutCartItem[],
+  locale: string
 ): Promise<CheckoutResult> {
   if (!items || items.length === 0) {
     return { error: "empty_cart" };
@@ -105,6 +106,7 @@ export async function createCheckoutSession(
     shipping_address_collection: { allowed_countries: ["GB"] },
     metadata: {
       cart_items: JSON.stringify(cartSummary),
+      locale,
     },
   });
 
