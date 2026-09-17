@@ -98,6 +98,59 @@
   },
   "footer": {
     "rights": "Todos los derechos reservados.",
-    "email": "info@wayra.life"
+    "email": "info@wayra.life",
+    "shopHeading": "Tienda",
+    "accountHeading": "Tu cuenta",
+    "login": "Iniciar sesión",
+    "myAccount": "Mi cuenta",
+    "createAccount": "Crear cuenta",
+    "quickLinksHeading": "Enlaces rápidos",
+    "aboutUs": "Sobre nosotros",
+    "shippingPolicy": "Política de envío",
+    "refundPolicy": "Devoluciones y reembolsos",
+    "legalDisclaimer": "Aviso legal",
+    "faq": "Preguntas frecuentes",
+    "contactHeading": "Contacto"
+  },
+  "shippingPolicy": {
+    "title": "Política de envío",
+    "intro": "Actualmente solo enviamos dentro del Reino Unido. El envío internacional está previsto para el futuro — si quieres pedir desde fuera del Reino Unido, escríbenos e intentaremos ayudarte.",
+    "processingHeading": "Tiempo de procesamiento",
+    "processingBody": "Los pedidos se procesan y envían en 1–3 días hábiles.",
+    "deliveryHeading": "Entrega en el Reino Unido",
+    "deliveryBody": "Una vez enviado, el pedido llega por Royal Mail Tracked, normalmente en 1–3 días hábiles.",
+    "costHeading": "Coste de envío",
+    "costBody": "El coste de envío se calcula al finalizar la compra, según tu pedido."
+  },
+  "refundPolicy": {
+    "title": "Devoluciones y reembolsos",
+    "intro": "Según la normativa británica de contratos de consumo (Consumer Contracts Regulations), tienes derecho a cancelar tu pedido en un plazo de 14 días desde su recepción, sin necesidad de justificarlo.",
+    "unopenedHeading": "Artículos sin abrir",
+    "unopenedBody": "Los artículos sin abrir y sin usar (como kuripe, tepi y piezas artesanales) se pueden devolver en un plazo de 14 días desde la entrega para un reembolso completo. Los gastos de devolución corren a cargo del cliente, salvo que el artículo esté defectuoso o se haya enviado por error.",
+    "hygieneHeading": "Rapé, hapé y sananga",
+    "hygieneBody": "Por motivos de higiene, el rapé, hapé y sananga no se pueden devolver una vez abiertos, siguiendo la práctica habitual para este tipo de producto. Si tu pedido llega dañado o defectuoso, contáctanos y lo resolveremos.",
+    "refundHeading": "Plazo de reembolso",
+    "refundBody": "Una vez recibamos el artículo devuelto, procuramos procesar el reembolso en un plazo de 14 días.",
+    "contactNote": "¿Preguntas sobre un pedido concreto? Escríbenos a info@wayra.life y te ayudaremos."
+  },
+  "legalDisclaimer": {
+    "title": "Aviso legal",
+    "body1": "WAYRA.life ofrece preparaciones vegetales tradicionales para uso ceremonial y cultural, obtenidas con respeto por su origen indígena.",
+    "body2": "Nuestros productos, incluidos el rapé y el hapé, no han sido evaluados por la MHRA, la FDA ni ninguna otra autoridad médica, y no están destinados a diagnosticar, tratar, curar ni prevenir ninguna enfermedad.",
+    "body3": "Los productos de rapé y hapé contienen tabaco (Nicotiana rustica) y se venden únicamente a mayores de 18 años. Si estás embarazada, en periodo de lactancia o tienes alguna condición médica, consulta a un profesional de la salud antes de usarlos.",
+    "body4": "Al comprar en WAYRA.life, confirmas que tienes al menos 18 años y que usas estos productos bajo tu propia responsabilidad."
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "q1": "¿Enviáis fuera del Reino Unido?",
+    "a1": "Todavía no — actualmente solo enviamos dentro del Reino Unido. El envío internacional está previsto para el futuro.",
+    "q2": "¿Cuánto tarda la entrega?",
+    "a2": "Los pedidos se procesan en 1–3 días hábiles y normalmente llegan en 1–3 días hábiles tras el envío por Royal Mail Tracked.",
+    "q3": "¿Qué es el rapé / hapé?",
+    "a3": "El rapé (también llamado hapé) es un polvo amazónico tradicional hecho de tabaco y ceniza de plantas medicinales, usado ceremonialmente por comunidades indígenas. Se aplica con un kuripe (autoaplicación) o un tepi (aplicado por otra persona).",
+    "q4": "¿Puedo devolver un producto?",
+    "a4": "Los artículos sin abrir se pueden devolver en 14 días. Por motivos de higiene, el rapé, hapé y sananga abiertos no se pueden devolver. Más detalles en nuestra página de Devoluciones y reembolsos.",
+    "q5": "¿Cómo os contacto?",
+    "a5": "Escríbenos a info@wayra.life o usa el formulario de contacto en nuestra página de Ayuda."
   }
 }

@@ -98,6 +98,59 @@
   },
   "footer": {
     "rights": "All rights reserved.",
-    "email": "info@wayra.life"
+    "email": "info@wayra.life",
+    "shopHeading": "Shop",
+    "accountHeading": "Your Account",
+    "login": "Login",
+    "myAccount": "My Account",
+    "createAccount": "Create Account",
+    "quickLinksHeading": "Quick Links",
+    "aboutUs": "About Us",
+    "shippingPolicy": "Shipping Policy",
+    "refundPolicy": "Refund Policy",
+    "legalDisclaimer": "Legal Disclaimer",
+    "faq": "FAQ",
+    "contactHeading": "Contact Us"
+  },
+  "shippingPolicy": {
+    "title": "Shipping Policy",
+    "intro": "We currently ship within the United Kingdom only. International shipping is planned for the future — if you'd like to order from outside the UK, please get in touch and we'll try to help.",
+    "processingHeading": "Processing time",
+    "processingBody": "Orders are processed and dispatched within 1–3 business days.",
+    "deliveryHeading": "UK delivery",
+    "deliveryBody": "Once dispatched, orders are sent via Royal Mail Tracked and typically arrive within 1–3 business days.",
+    "costHeading": "Shipping cost",
+    "costBody": "Shipping cost is calculated at checkout based on your order."
+  },
+  "refundPolicy": {
+    "title": "Returns & Refunds",
+    "intro": "Under UK Consumer Contracts Regulations, you have the right to cancel your order within 14 days of receiving it, without giving a reason.",
+    "unopenedHeading": "Unopened items",
+    "unopenedBody": "Unopened, unused items (such as kuripe, tepi, and handcrafted pieces) can be returned within 14 days of delivery for a full refund. Return postage is paid by the customer unless the item is faulty or was sent in error.",
+    "hygieneHeading": "Rapé, hapé and sananga",
+    "hygieneBody": "For hygiene and health protection reasons, rapé, hapé and sananga cannot be returned once opened, in line with standard practice for this category of product. If your order arrives damaged or faulty, please contact us — we'll sort it out.",
+    "refundHeading": "Refund timing",
+    "refundBody": "Once we receive your returned item, we aim to process your refund within 14 days.",
+    "contactNote": "Questions about a specific order? Contact us at info@wayra.life and we'll help."
+  },
+  "legalDisclaimer": {
+    "title": "Legal Disclaimer",
+    "body1": "WAYRA.life offers traditional plant preparations for ceremonial and cultural use, sourced with respect for their indigenous origins.",
+    "body2": "Our products, including rapé and hapé, are not evaluated by the MHRA, FDA or any other medical authority, and are not intended to diagnose, treat, cure or prevent any disease.",
+    "body3": "Rapé and hapé products contain tobacco (Nicotiana rustica) and are sold to adults aged 18 and over only. If you are pregnant, nursing, or have a health condition, please consult a healthcare professional before use.",
+    "body4": "By purchasing from WAYRA.life, you confirm that you are at least 18 years old and are using these products at your own discretion and responsibility."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "q1": "Do you ship internationally?",
+    "a1": "Not yet — we currently ship within the UK only. International shipping is planned for the future.",
+    "q2": "How long does delivery take?",
+    "a2": "Orders are processed within 1–3 business days and typically arrive within 1–3 business days after dispatch via Royal Mail Tracked.",
+    "q3": "What is rapé / hapé?",
+    "a3": "Rapé (also called hapé) is a traditional Amazonian snuff made from tobacco and the ash of medicinal plants, used ceremonially by indigenous communities. It's applied with a kuripe (self-applicator) or tepi (applied by another person).",
+    "q4": "Can I return a product?",
+    "a4": "Unopened items can be returned within 14 days. For hygiene reasons, opened rapé, hapé and sananga cannot be returned. See our Returns & Refunds page for details.",
+    "q5": "How do I contact you?",
+    "a5": "Email us at info@wayra.life or use the contact form on our Support page."
   }
 }

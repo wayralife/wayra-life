@@ -98,6 +98,59 @@
   },
   "footer": {
     "rights": "Wszelkie prawa zastrzeżone.",
-    "email": "info@wayra.life"
+    "email": "info@wayra.life",
+    "shopHeading": "Sklep",
+    "accountHeading": "Twoje konto",
+    "login": "Zaloguj się",
+    "myAccount": "Moje konto",
+    "createAccount": "Utwórz konto",
+    "quickLinksHeading": "Przydatne linki",
+    "aboutUs": "O nas",
+    "shippingPolicy": "Polityka wysyłki",
+    "refundPolicy": "Zwroty i refundacje",
+    "legalDisclaimer": "Informacje prawne",
+    "faq": "FAQ",
+    "contactHeading": "Kontakt"
+  },
+  "shippingPolicy": {
+    "title": "Polityka wysyłki",
+    "intro": "Obecnie wysyłamy tylko na terenie Wielkiej Brytanii. Wysyłka międzynarodowa jest planowana w przyszłości — jeśli chcesz zamówić spoza UK, napisz do nas, postaramy się pomóc.",
+    "processingHeading": "Czas realizacji",
+    "processingBody": "Zamówienia są przetwarzane i wysyłane w ciągu 1–3 dni roboczych.",
+    "deliveryHeading": "Dostawa w UK",
+    "deliveryBody": "Po wysłaniu paczka trafia do Ciebie przez Royal Mail Tracked, zwykle w ciągu 1–3 dni roboczych.",
+    "costHeading": "Koszt wysyłki",
+    "costBody": "Koszt wysyłki jest wyliczany przy płatności, zależnie od zamówienia."
+  },
+  "refundPolicy": {
+    "title": "Zwroty i refundacje",
+    "intro": "Zgodnie z brytyjskimi przepisami o umowach konsumenckich (Consumer Contracts Regulations), masz prawo odstąpić od umowy w ciągu 14 dni od otrzymania zamówienia, bez podawania przyczyny.",
+    "unopenedHeading": "Nieotwarte produkty",
+    "unopenedBody": "Nieotwarte, nieużywane produkty (np. kuripe, tepi, rękodzieło) można zwrócić w ciągu 14 dni od dostawy w celu pełnego zwrotu pieniędzy. Koszt zwrotnej wysyłki pokrywa klient, chyba że produkt był wadliwy lub wysłany przez pomyłkę.",
+    "hygieneHeading": "Rapé, hapé i sananga",
+    "hygieneBody": "Ze względów higienicznych rapé, hapé i sananga nie podlegają zwrotowi po otwarciu — to standardowa praktyka dla tej kategorii produktów. Jeśli zamówienie dotarło uszkodzone lub wadliwe, napisz do nas — rozwiążemy to.",
+    "refundHeading": "Czas zwrotu pieniędzy",
+    "refundBody": "Po otrzymaniu zwróconego produktu staramy się zrealizować zwrot pieniędzy w ciągu 14 dni.",
+    "contactNote": "Masz pytania o konkretne zamówienie? Napisz na info@wayra.life, pomożemy."
+  },
+  "legalDisclaimer": {
+    "title": "Informacje prawne",
+    "body1": "WAYRA.life oferuje tradycyjne preparaty roślinne do użytku ceremonialnego i kulturowego, pozyskiwane z szacunkiem dla ich rdzennego pochodzenia.",
+    "body2": "Nasze produkty, w tym rapé i hapé, nie zostały ocenione przez MHRA, FDA ani żaden inny organ medyczny i nie są przeznaczone do diagnozowania, leczenia ani zapobiegania jakimkolwiek chorobom.",
+    "body3": "Produkty rapé i hapé zawierają tytoń (Nicotiana rustica) i są sprzedawane wyłącznie osobom pełnoletnim (18+). Jeśli jesteś w ciąży, karmisz piersią lub masz problemy zdrowotne, skonsultuj się z lekarzem przed użyciem.",
+    "body4": "Dokonując zakupu w WAYRA.life, potwierdzasz, że masz ukończone 18 lat i korzystasz z tych produktów na własną odpowiedzialność."
+  },
+  "faq": {
+    "title": "Najczęściej zadawane pytania",
+    "q1": "Czy wysyłacie za granicę?",
+    "a1": "Jeszcze nie — obecnie wysyłamy tylko na terenie Wielkiej Brytanii. Wysyłka międzynarodowa jest planowana w przyszłości.",
+    "q2": "Jak długo trwa dostawa?",
+    "a2": "Zamówienia są przetwarzane w ciągu 1–3 dni roboczych i zwykle docierają w ciągu 1–3 dni roboczych po wysłaniu przez Royal Mail Tracked.",
+    "q3": "Czym jest rapé / hapé?",
+    "a3": "Rapé (zwane też hapé) to tradycyjny amazoński proszek na bazie tytoniu i popiołu roślin leczniczych, używany ceremonialnie przez rdzenne społeczności. Aplikuje się go za pomocą kuripe (samodzielnie) lub tepi (przez drugą osobę).",
+    "q4": "Czy mogę zwrócić produkt?",
+    "a4": "Nieotwarte produkty można zwrócić w ciągu 14 dni. Ze względów higienicznych otwarte rapé, hapé i sananga nie podlegają zwrotowi. Szczegóły na stronie Zwroty i refundacje.",
+    "q5": "Jak się z Wami skontaktować?",
+    "a5": "Napisz na info@wayra.life albo skorzystaj z formularza kontaktowego na stronie Pomoc."
   }
 }
