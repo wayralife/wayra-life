@@ -23,7 +23,8 @@ export interface ShopProduct {
  */
 export async function getShopProducts(
   locale: string,
-  categorySlug?: string
+  categorySlug?: string,
+  search?: string
 ): Promise<ShopProduct[]> {
   const supabase = await createClient();
 
@@ -54,7 +55,7 @@ export async function getShopProducts(
   const { data, error } = await query;
   if (error || !data) return [];
 
-  return data.map((row: any) => {
+  const products = data.map((row: any) => {
     const translations: any[] = row.product_translations ?? [];
     const translation =
       translations.find((t) => t.locale === locale) ??
@@ -82,6 +83,20 @@ export async function getShopProducts(
       imageAlt: firstImage?.alt_text ?? null,
     };
   });
+
+  // Search is applied in JS rather than SQL: the catalog is small, and the
+  // product name lives in a per-locale translation row, which makes a
+  // straightforward SQL ILIKE across locales more trouble than it's worth
+  // at this scale.
+  const trimmedSearch = search?.trim().toLowerCase();
+  if (!trimmedSearch) return products;
+
+  return products.filter(
+    (product) =>
+      product.name.toLowerCase().includes(trimmedSearch) ||
+      product.description?.toLowerCase().includes(trimmedSearch) ||
+      product.sku.toLowerCase().includes(trimmedSearch)
+  );
 }
 
 export async function getShopProductBySlug(

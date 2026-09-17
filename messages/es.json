@@ -5,6 +5,7 @@
     "ourStory": "Nuestra historia",
     "support": "Ayuda",
     "account": "Cuenta",
+    "logIn": "Iniciar sesión",
     "cart": "Carrito"
   },
   "home": {
@@ -21,7 +22,10 @@
     "addToCart": "Añadir al carrito",
     "viewProduct": "Ver producto",
     "outOfStock": "Agotado",
-    "sku": "SKU"
+    "sku": "SKU",
+    "searchPlaceholder": "Buscar",
+    "searchResultsFor": "Resultados de búsqueda para \"{query}\"",
+    "noSearchResults": "Ningún producto coincide con tu búsqueda."
   },
   "product": {
     "backToShop": "Volver a la tienda",

@@ -5,6 +5,7 @@
     "ourStory": "Nasza historia",
     "support": "Pomoc",
     "account": "Konto",
+    "logIn": "Zaloguj się",
     "cart": "Koszyk"
   },
   "home": {
@@ -21,7 +22,10 @@
     "addToCart": "Dodaj do koszyka",
     "viewProduct": "Zobacz produkt",
     "outOfStock": "Brak w magazynie",
-    "sku": "SKU"
+    "sku": "SKU",
+    "searchPlaceholder": "Szukaj",
+    "searchResultsFor": "Wyniki wyszukiwania dla \"{query}\"",
+    "noSearchResults": "Żaden produkt nie pasuje do wyszukiwania."
   },
   "product": {
     "backToShop": "Wróć do sklepu",
