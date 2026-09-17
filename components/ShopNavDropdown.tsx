@@ -18,10 +18,6 @@ export default function ShopNavDropdown() {
   const [categories, setCategories] = useState<CategoryOption[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Categories rarely change, so a lightweight client-side fetch (the
-  // `categories`/`category_translations` tables are public-readable) is
-  // simpler here than threading server data down through the layout just
-  // for a nav dropdown.
   useEffect(() => {
     let active = true;
     const supabase = createClient();
@@ -95,25 +91,36 @@ export default function ShopNavDropdown() {
         )}
       </div>
 
+      {/*
+        pt-2 (not mt-2) on purpose: a margin would leave a gap between the
+        trigger and this menu that isn't part of either element's hit box,
+        so moving the mouse straight down from "Shop" to a category would
+        cross a dead zone and fire onMouseLeave on the container, closing
+        the menu before the click landed. Padding keeps that space inside
+        this element (and therefore inside the shared hover area), while
+        the visible white box still starts below it.
+      */}
       {open && categories.length > 0 && (
-        <div className="absolute left-0 top-full z-20 mt-2 min-w-44 rounded-md border border-black/10 bg-white py-2 shadow-lg">
-          <Link
-            href="/shop"
-            onClick={() => setOpen(false)}
-            className="block px-4 py-1.5 text-sm hover:bg-black/5"
-          >
-            {tShop("allCategories")}
-          </Link>
-          {categories.map((category) => (
+        <div className="absolute left-0 top-full z-20 pt-2">
+          <div className="min-w-44 rounded-md border border-black/10 bg-white py-2 shadow-lg">
             <Link
-              key={category.slug}
-              href={`/shop?category=${category.slug}`}
+              href="/shop"
               onClick={() => setOpen(false)}
               className="block px-4 py-1.5 text-sm hover:bg-black/5"
             >
-              {category.name}
+              {tShop("allCategories")}
             </Link>
-          ))}
+            {categories.map((category) => (
+              <Link
+                key={category.slug}
+                href={`/shop?category=${category.slug}`}
+                onClick={() => setOpen(false)}
+                className="block px-4 py-1.5 text-sm hover:bg-black/5"
+              >
+                {category.name}
+              </Link>
+            ))}
+          </div>
         </div>
       )}
     </div>
