@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 import { useCart } from "@/lib/cart-context";
 import SearchBar from "@/components/SearchBar";
 import AccountNavLink from "@/components/AccountNavLink";
+import ShopNavDropdown from "@/components/ShopNavDropdown";
 
 export default function Header() {
   const t = useTranslations("nav");
@@ -16,7 +17,7 @@ export default function Header() {
 
   return (
     <header className="border-b border-black/10">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 py-4">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-4 px-4 py-4">
         <Link href="/" className="flex items-center">
           <Image
             src="/images/wayra-logo.jpg"
@@ -29,31 +30,15 @@ export default function Header() {
         </Link>
 
         <nav className="flex flex-wrap items-center gap-5 text-sm">
-          <Link href="/shop">{t("shop")}</Link>
+          <Link href="/">{t("home")}</Link>
+          <ShopNavDropdown />
           <Link href="/our-story">{t("ourStory")}</Link>
           <Link href="/support">{t("support")}</Link>
         </nav>
 
-        <div className="flex items-center gap-2 text-sm">
-          {routing.locales.map((loc) => (
-            <Link
-              key={loc}
-              href={pathname}
-              locale={loc}
-              className={
-                loc === locale ? "font-semibold underline" : "text-black/60"
-              }
-            >
-              {loc.toUpperCase()}
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-4 border-t border-black/5 px-4 py-3">
         <SearchBar />
 
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-5 text-sm">
           <AccountNavLink />
 
           <Link href="/cart" className="flex items-center gap-1.5">
@@ -78,6 +63,21 @@ export default function Header() {
               {isLoaded ? totalItems : 0}
             </span>
           </Link>
+
+          <div className="flex items-center gap-2">
+            {routing.locales.map((loc) => (
+              <Link
+                key={loc}
+                href={pathname}
+                locale={loc}
+                className={
+                  loc === locale ? "font-semibold underline" : "text-black/60"
+                }
+              >
+                {loc.toUpperCase()}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </header>
