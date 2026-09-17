@@ -12,7 +12,7 @@ export default async function Footer() {
     <footer className="border-t border-black/10 bg-black/[0.02]">
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-10 px-4 py-12 text-sm sm:grid-cols-4">
         <div>
-          <h3 className="mb-3 font-medium">{t("shopHeading")}</h3>
+          <h3 className="mb-3 font-semibold">{t("shopHeading")}</h3>
           <ul className="flex flex-col gap-2 text-black/60">
             {categories.slice(0, 4).map((category) => (
               <li key={category.slug}>
@@ -28,7 +28,7 @@ export default async function Footer() {
         </div>
 
         <div>
-          <h3 className="mb-3 font-medium">{t("accountHeading")}</h3>
+          <h3 className="mb-3 font-semibold">{t("accountHeading")}</h3>
           <ul className="flex flex-col gap-2 text-black/60">
             <li>
               <Link href="/login" className="hover:text-black">
@@ -49,7 +49,7 @@ export default async function Footer() {
         </div>
 
         <div>
-          <h3 className="mb-3 font-medium">{t("quickLinksHeading")}</h3>
+          <h3 className="mb-3 font-semibold">{t("quickLinksHeading")}</h3>
           <ul className="flex flex-col gap-2 text-black/60">
             <li>
               <Link href="/our-story" className="hover:text-black">
@@ -80,7 +80,7 @@ export default async function Footer() {
         </div>
 
         <div>
-          <h3 className="mb-3 font-medium">{t("contactHeading")}</h3>
+          <h3 className="mb-3 font-semibold">{t("contactHeading")}</h3>
           <p className="text-black/60">
             <a href="mailto:info@wayra.life" className="hover:text-black">
               info@wayra.life
