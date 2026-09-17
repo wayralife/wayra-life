@@ -18,13 +18,18 @@ export default function Header() {
   return (
     <header className="border-b border-black/10">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-4 px-4 py-4">
-        <Link href="/" className="flex shrink-0 items-center">
+        <Link
+          href="/"
+          className="flex shrink-0 items-center"
+          style={{ minWidth: "6rem", minHeight: "6rem" }}
+        >
           <Image
-            src="/images/wayra-logo.jpg"
+            src="/images/wayra-logo-transparent.png"
             alt="WAYRA.life"
-            width={160}
-            height={160}
-            className="h-14 w-14 object-contain"
+            width={220}
+            height={220}
+            className="h-24 w-24 shrink-0 object-contain"
+            style={{ minWidth: "6rem", minHeight: "6rem" }}
             priority
           />
         </Link>
