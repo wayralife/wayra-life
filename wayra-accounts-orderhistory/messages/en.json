@@ -1,0 +1,99 @@
+{
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "ourStory": "Our Story",
+    "support": "Support",
+    "account": "Account",
+    "cart": "Cart"
+  },
+  "home": {
+    "heroTitle": "WAYRA — Ceremonial traditions from the Amazon",
+    "heroSubtitle": "Rapé, hapé, kuripe, tepi, herbs and handcrafted ceremonial pieces, brought to you with respect for their origins.",
+    "shopNow": "Shop now",
+    "categoriesTitle": "Shop by category",
+    "connectedNote": "Connected to the WAYRA database"
+  },
+  "shop": {
+    "title": "Shop",
+    "allCategories": "All products",
+    "empty": "There are no products here yet — please check back soon.",
+    "addToCart": "Add to cart",
+    "viewProduct": "View product",
+    "outOfStock": "Out of stock",
+    "sku": "SKU"
+  },
+  "product": {
+    "backToShop": "Back to shop",
+    "quantity": "Quantity",
+    "addedToCart": "Added to cart",
+    "cartWip": "Payments are currently in test mode — no real charges are made yet.",
+    "notFound": "This product could not be found."
+  },
+  "cart": {
+    "title": "Your cart",
+    "empty": "Your cart is empty.",
+    "browseShop": "Browse the shop",
+    "product": "Product",
+    "price": "Price",
+    "quantity": "Quantity",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "remove": "Remove",
+    "checkout": "Go to checkout",
+    "checkoutTitle": "Checkout",
+    "checkoutError": "Something went wrong starting checkout — please try again.",
+    "payWithCard": "Pay with card",
+    "redirecting": "Redirecting to secure payment…",
+    "testModeNote": "Test mode — use card number 4242 4242 4242 4242, any future date and any 3-digit CVC. No real money is charged.",
+    "successTitle": "Thank you for your order!",
+    "successBody": "Your payment was successful. We've received your order and will be in touch about shipping.",
+    "backToCart": "Back to cart"
+  },
+  "support": {
+    "title": "Got questions? Send us a message",
+    "intro": "We'd love to hear from you! Send us a message using the form, or email us.",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "messageLabel": "Message",
+    "submit": "Submit",
+    "sending": "Sending…",
+    "success": "Thanks — your message has been sent. We'll get back to you at the email address you provided.",
+    "errorInvalidEmail": "Please enter a valid email address.",
+    "errorGeneric": "Something went wrong sending your message — please try again, or email us directly.",
+    "emailNote": "You can also reach us directly at"
+  },
+  "login": {
+    "signInTitle": "Sign in",
+    "signUpTitle": "Create an account",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "signIn": "Sign in",
+    "signUp": "Create account",
+    "pleaseWait": "Please wait…",
+    "switchToSignUp": "Need an account? Create one",
+    "switchToSignIn": "Already have an account? Sign in",
+    "signUpSuccess": "Account created. Check your email if confirmation is required, then sign in.",
+    "signOut": "Sign out"
+  },
+  "account": {
+    "title": "My account",
+    "notSignedIn": "Sign in to see your order history.",
+    "signInCta": "Sign in",
+    "ordersHeading": "Order history",
+    "noOrders": "You haven't placed any orders yet.",
+    "orderRef": "Order",
+    "status": {
+      "pending": "Pending",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled",
+      "refunded": "Refunded"
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "email": "info@wayra.life"
+  }
+}
