@@ -64,8 +64,8 @@
     "emailNote": "Możesz też napisać bezpośrednio na"
   },
   "login": {
-    "signInTitle": "Logowanie administratora",
-    "signUpTitle": "Utwórz konto administratora",
+    "signInTitle": "Zaloguj się",
+    "signUpTitle": "Utwórz konto",
     "emailLabel": "Email",
     "passwordLabel": "Hasło",
     "signIn": "Zaloguj się",
@@ -75,6 +75,22 @@
     "switchToSignIn": "Masz już konto? Zaloguj się",
     "signUpSuccess": "Konto utworzone. Jeśli wymagane jest potwierdzenie, sprawdź e-mail, a potem się zaloguj.",
     "signOut": "Wyloguj się"
+  },
+  "account": {
+    "title": "Moje konto",
+    "notSignedIn": "Zaloguj się, aby zobaczyć historię zamówień.",
+    "signInCta": "Zaloguj się",
+    "ordersHeading": "Historia zamówień",
+    "noOrders": "Nie złożyłeś jeszcze żadnego zamówienia.",
+    "orderRef": "Zamówienie",
+    "status": {
+      "pending": "Oczekujące",
+      "processing": "W realizacji",
+      "shipped": "Wysłane",
+      "delivered": "Dostarczone",
+      "cancelled": "Anulowane",
+      "refunded": "Zwrócone"
+    }
   },
   "footer": {
     "rights": "Wszelkie prawa zastrzeżone.",

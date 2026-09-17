@@ -27,12 +27,25 @@ export default function LoginPage() {
         email,
         password,
       });
-      setIsPending(false);
       if (error) {
+        setIsPending(false);
         setError(error.message);
         return;
       }
-      router.push("/admin");
+
+      // Admins land in the admin panel; everyone else goes to their
+      // account/order-history page.
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", user!.id)
+        .maybeSingle();
+
+      setIsPending(false);
+      router.push(profile?.role === "admin" ? "/admin" : "/account");
       router.refresh();
     } else {
       const { error } = await supabase.auth.signUp({ email, password });

@@ -64,8 +64,8 @@
     "emailNote": "You can also reach us directly at"
   },
   "login": {
-    "signInTitle": "Admin sign in",
-    "signUpTitle": "Create admin account",
+    "signInTitle": "Sign in",
+    "signUpTitle": "Create an account",
     "emailLabel": "Email",
     "passwordLabel": "Password",
     "signIn": "Sign in",
@@ -75,6 +75,22 @@
     "switchToSignIn": "Already have an account? Sign in",
     "signUpSuccess": "Account created. Check your email if confirmation is required, then sign in.",
     "signOut": "Sign out"
+  },
+  "account": {
+    "title": "My account",
+    "notSignedIn": "Sign in to see your order history.",
+    "signInCta": "Sign in",
+    "ordersHeading": "Order history",
+    "noOrders": "You haven't placed any orders yet.",
+    "orderRef": "Order",
+    "status": {
+      "pending": "Pending",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled",
+      "refunded": "Refunded"
+    }
   },
   "footer": {
     "rights": "All rights reserved.",

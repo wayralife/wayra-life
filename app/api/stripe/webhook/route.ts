@@ -81,9 +81,19 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   const total = (session.amount_total ?? 0) / 100;
   const shippingCost = (session.total_details?.amount_shipping ?? 0) / 100;
 
+  // If the buyer's email matches an existing customer account, link the
+  // order to it so they can see it in their order history. Guest checkouts
+  // (no matching account) simply get user_id = null.
+  const { data: matchingProfile } = await supabase
+    .from("profiles")
+    .select("id")
+    .eq("email", email)
+    .maybeSingle();
+
   const { data: order, error: orderError } = await supabase
     .from("orders")
     .insert({
+      user_id: matchingProfile?.id ?? null,
       email,
       status: "processing",
       payment_status: "paid",
