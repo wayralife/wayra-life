@@ -6,6 +6,31 @@ interface OurStoryContent {
   imageUrl?: string;
 }
 
+/**
+ * Renders body text where a line starting with "## " is treated as a
+ * section heading (simple markdown-lite, not a full parser) — this lets
+ * admin-edited content have real visual structure (like "Our Mission",
+ * "Why We Are Unique") without needing a rich text editor in the CMS.
+ */
+function renderBody(body: string) {
+  const paragraphs = body.split(/\n{2,}/);
+
+  return paragraphs.map((block, i) => {
+    if (block.startsWith("## ")) {
+      return (
+        <h2 key={i} className="mt-10 mb-3 text-xl font-semibold text-black">
+          {block.slice(3).trim()}
+        </h2>
+      );
+    }
+    return (
+      <p key={i} className="mt-4 whitespace-pre-line text-black/70">
+        {block}
+      </p>
+    );
+  });
+}
+
 export default async function OurStoryPage({
   params,
 }: {
@@ -20,8 +45,6 @@ export default async function OurStoryPage({
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
       {content?.imageUrl && (
-        // Plain img, not next/image: this URL is set by the admin and can
-        // come from any host.
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={content.imageUrl}
@@ -30,7 +53,7 @@ export default async function OurStoryPage({
         />
       )}
       <h1 className="text-3xl font-semibold">{title}</h1>
-      <div className="mt-4 whitespace-pre-line text-black/70">{body}</div>
+      {renderBody(body)}
     </div>
   );
 }
