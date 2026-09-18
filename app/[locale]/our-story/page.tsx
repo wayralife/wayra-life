@@ -13,7 +13,10 @@ interface OurStoryContent {
  * "Why We Are Unique") without needing a rich text editor in the CMS.
  */
 function renderBody(body: string) {
-  const paragraphs = body.split(/\n{2,}/);
+  // A single line break is enough to start a new paragraph/heading — some
+  // browsers/paste sources collapse blank lines down to one, so requiring
+  // two newlines here was too strict.
+  const paragraphs = body.split(/\n+/).filter((block) => block.trim() !== "");
 
   return paragraphs.map((block, i) => {
     if (block.startsWith("## ")) {
@@ -45,6 +48,8 @@ export default async function OurStoryPage({
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
       {content?.imageUrl && (
+        // Plain img, not next/image: this URL is set by the admin and can
+        // come from any host.
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={content.imageUrl}
