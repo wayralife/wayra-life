@@ -27,38 +27,79 @@ export default async function HomePage({
   const ctaUrl = hero?.ctaUrl || "/shop";
   const isExternalCta = ctaUrl.startsWith("http");
 
+  const hasBackground = Boolean(hero?.heroImageUrl);
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
-      <section className="mx-auto max-w-2xl text-center">
-        {hero?.heroImageUrl && (
-          // Plain img, not next/image: this URL is set by the admin and
-          // can come from any host.
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={hero.heroImageUrl}
-            alt=""
-            className="mx-auto mb-8 max-h-72 w-full rounded-lg object-cover"
-          />
+      <section
+        className={
+          hasBackground
+            ? "relative mx-auto max-w-3xl overflow-hidden rounded-2xl text-center"
+            : "mx-auto max-w-2xl text-center"
+        }
+      >
+        {hasBackground && (
+          <>
+            {/* Plain img, not next/image: this URL is set by the admin and
+                can come from any host. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={hero!.heroImageUrl}
+              alt=""
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/50" />
+          </>
         )}
-        <h1 className="text-4xl font-semibold tracking-tight">{heroTitle}</h1>
-        <p className="mt-4 whitespace-pre-line text-black/70">
-          {heroSubtitle}
-        </p>
-        {isExternalCta ? (
-          <a
-            href={ctaUrl}
-            className="mt-8 inline-block rounded-md bg-black px-8 py-3 text-white transition hover:bg-black/80"
+        <div
+          className={
+            hasBackground
+              ? "relative z-10 px-6 py-20 sm:py-28"
+              : undefined
+          }
+        >
+          <h1
+            className={
+              hasBackground
+                ? "text-4xl font-semibold tracking-tight text-white"
+                : "text-4xl font-semibold tracking-tight"
+            }
           >
-            {ctaLabel}
-          </a>
-        ) : (
-          <Link
-            href={ctaUrl}
-            className="mt-8 inline-block rounded-md bg-black px-8 py-3 text-white transition hover:bg-black/80"
+            {heroTitle}
+          </h1>
+          <p
+            className={
+              hasBackground
+                ? "mt-4 whitespace-pre-line text-white/90"
+                : "mt-4 whitespace-pre-line text-black/70"
+            }
           >
-            {ctaLabel}
-          </Link>
-        )}
+            {heroSubtitle}
+          </p>
+          {isExternalCta ? (
+            
+              href={ctaUrl}
+              className={
+                hasBackground
+                  ? "mt-8 inline-block rounded-md bg-white px-8 py-3 text-black transition hover:bg-white/90"
+                  : "mt-8 inline-block rounded-md bg-black px-8 py-3 text-white transition hover:bg-black/80"
+              }
+            >
+              {ctaLabel}
+            </a>
+          ) : (
+            <Link
+              href={ctaUrl}
+              className={
+                hasBackground
+                  ? "mt-8 inline-block rounded-md bg-white px-8 py-3 text-black transition hover:bg-white/90"
+                  : "mt-8 inline-block rounded-md bg-black px-8 py-3 text-white transition hover:bg-black/80"
+              }
+            >
+              {ctaLabel}
+            </Link>
+          )}
+        </div>
       </section>
 
       <section className="mt-16">

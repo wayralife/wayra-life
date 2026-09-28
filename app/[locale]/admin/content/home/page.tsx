@@ -6,7 +6,11 @@ import ContentBlockForm, {
 } from "@/components/admin/ContentBlockForm";
 
 const FIELDS: ContentFieldConfig[] = [
-  { name: "heroImageUrl", label: "Zdjęcie w tle (opcjonalnie)", type: "image" },
+  {
+    name: "heroImageUrl",
+    label: "Zdjęcie tła sekcji głównej (opcjonalnie)",
+    type: "image",
+  },
   { name: "heroTitle", label: "Tytuł (duży nagłówek)", type: "text" },
   { name: "heroSubtitle", label: "Podtytuł", type: "textarea" },
   { name: "ctaLabel", label: "Tekst przycisku", type: "text" },
