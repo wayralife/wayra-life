@@ -19,21 +19,20 @@ export async function getAdminOrders(): Promise<AdminOrderListItem[]> {
     .select(
       "id, email, status, payment_status, total, currency, created_at, order_items(id)"
     )
-    .order("created_at", { ascending: false })
-    .returns
-      {
-        id: string;
-        email: string;
-        status: string;
-        payment_status: string;
-        total: number;
-        currency: string;
-        created_at: string;
-        order_items: { id: string }[];
-      }[]
-    >();
+    .order("created_at", { ascending: false });
 
-  return (data ?? []).map((order) => ({
+  const rows = (data ?? []) as unknown as {
+    id: string;
+    email: string;
+    status: string;
+    payment_status: string;
+    total: number;
+    currency: string;
+    created_at: string;
+    order_items: { id: string }[];
+  }[];
+
+  return rows.map((order) => ({
     id: order.id,
     email: order.email,
     status: order.status,
@@ -134,8 +133,26 @@ export async function getAdminOrder(
     currency: string;
     created_at: string;
     order_items: { id: string; name_snapshot: string; qty: number; unit_price: number }[];
-    shipping_address: AdminOrderAddress extends never ? never : Parameters<typeof mapAddress>[0];
-    billing_address: Parameters<typeof mapAddress>[0];
+    shipping_address: {
+      full_name: string | null;
+      line1: string;
+      line2: string | null;
+      city: string;
+      region: string | null;
+      postcode: string;
+      country: string;
+      phone: string | null;
+    } | null;
+    billing_address: {
+      full_name: string | null;
+      line1: string;
+      line2: string | null;
+      city: string;
+      region: string | null;
+      postcode: string;
+      country: string;
+      phone: string | null;
+    } | null;
   };
 
   return {
