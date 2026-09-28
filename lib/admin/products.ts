@@ -41,6 +41,51 @@ export async function getAdminProducts(): Promise<AdminProductListItem[]> {
   });
 }
 
+export interface LowStockProduct {
+  id: string;
+  sku: string;
+  slug: string;
+  stockQty: number;
+  lowStockThreshold: number;
+  status: string;
+  name: string;
+}
+
+/**
+ * Active/draft products whose stock has fallen at or below their own
+ * low_stock_threshold. Archived products are excluded since there's
+ * nothing to reorder for something you've stopped selling.
+ */
+export async function getLowStockProducts(): Promise<LowStockProduct[]> {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("products")
+    .select(
+      "id, sku, slug, stock_qty, low_stock_threshold, status, product_translations(locale, name)"
+    )
+    .neq("status", "archived")
+    .order("stock_qty", { ascending: true });
+
+  if (error || !data) return [];
+
+  return data
+    .filter((row: any) => row.stock_qty <= row.low_stock_threshold)
+    .map((row: any) => {
+      const translations: any[] = row.product_translations ?? [];
+      const translation =
+        translations.find((t) => t.locale === "en") ?? translations[0];
+      return {
+        id: row.id,
+        sku: row.sku,
+        slug: row.slug,
+        stockQty: row.stock_qty,
+        lowStockThreshold: row.low_stock_threshold,
+        status: row.status,
+        name: translation?.name ?? row.slug,
+      };
+    });
+}
+
 export interface AdminCategoryOption {
   id: string;
   name: string;
