@@ -145,6 +145,102 @@ export function orderConfirmationEmail(
   return { subject: t.subject(ref), html };
 }
 
+const SHIPPED_COPY = {
+  en: {
+    subject: (ref: string) => `Your WAYRA order #${ref} has shipped`,
+    heading: "Your order is on its way!",
+    intro: "Good news — your order has been dispatched.",
+    orderRef: "Order reference",
+    footer:
+      "Questions about delivery? Just reply to this email or contact us at info@wayra.life.",
+  },
+  pl: {
+    subject: (ref: string) => `Twoje zamówienie WAYRA #${ref} zostało wysłane`,
+    heading: "Twoje zamówienie jest w drodze!",
+    intro: "Dobra wiadomość — Twoje zamówienie zostało wysłane.",
+    orderRef: "Numer zamówienia",
+    footer:
+      "Pytania dotyczące dostawy? Odpisz na tego maila albo napisz na info@wayra.life.",
+  },
+  es: {
+    subject: (ref: string) => `Tu pedido WAYRA #${ref} ha sido enviado`,
+    heading: "¡Tu pedido está en camino!",
+    intro: "Buenas noticias — tu pedido ha sido enviado.",
+    orderRef: "Referencia del pedido",
+    footer:
+      "¿Preguntas sobre la entrega? Responde a este correo o escríbenos a info@wayra.life.",
+  },
+} as const;
+
+export function orderShippedEmail(
+  locale: string,
+  orderId: string
+): { subject: string; html: string } {
+  const t = isSupportedEmailLocale(locale) ? SHIPPED_COPY[locale] : SHIPPED_COPY.en;
+  const ref = orderId.slice(0, 8).toUpperCase();
+
+  const html = `
+  <div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:0 auto;color:#111;">
+    <h1 style="font-size:22px;margin-bottom:4px;">${t.heading}</h1>
+    <p style="color:#555;">${t.intro}</p>
+    <p style="color:#888;font-size:13px;">${t.orderRef}: <strong>${ref}</strong></p>
+    <p style="margin-top:32px;color:#888;font-size:13px;">${t.footer}</p>
+  </div>`;
+
+  return { subject: t.subject(ref), html };
+}
+
+const REFUNDED_COPY = {
+  en: {
+    subject: (ref: string) => `Your WAYRA order #${ref} has been refunded`,
+    heading: "Your refund has been processed",
+    intro: (amount: string) =>
+      `We've processed a refund of ${amount} for this order. It can take a few business days to appear on your statement, depending on your bank.`,
+    orderRef: "Order reference",
+    footer:
+      "Questions about this refund? Just reply to this email or contact us at info@wayra.life.",
+  },
+  pl: {
+    subject: (ref: string) => `Zwrot dla zamówienia WAYRA #${ref} został zrealizowany`,
+    heading: "Twój zwrot został przetworzony",
+    intro: (amount: string) =>
+      `Zrealizowaliśmy zwrot w wysokości ${amount} za to zamówienie. Zaksięgowanie środków może potrwać kilka dni roboczych, w zależności od banku.`,
+    orderRef: "Numer zamówienia",
+    footer:
+      "Pytania dotyczące zwrotu? Odpisz na tego maila albo napisz na info@wayra.life.",
+  },
+  es: {
+    subject: (ref: string) => `Se ha reembolsado tu pedido WAYRA #${ref}`,
+    heading: "Tu reembolso ha sido procesado",
+    intro: (amount: string) =>
+      `Hemos procesado un reembolso de ${amount} para este pedido. Puede tardar unos días hábiles en aparecer en tu extracto, según tu banco.`,
+    orderRef: "Referencia del pedido",
+    footer:
+      "¿Preguntas sobre este reembolso? Responde a este correo o escríbenos a info@wayra.life.",
+  },
+} as const;
+
+export function orderRefundedEmail(
+  locale: string,
+  orderId: string,
+  amount: number,
+  currency: string
+): { subject: string; html: string } {
+  const t = isSupportedEmailLocale(locale) ? REFUNDED_COPY[locale] : REFUNDED_COPY.en;
+  const ref = orderId.slice(0, 8).toUpperCase();
+  const amountLabel = formatMoney(amount, currency);
+
+  const html = `
+  <div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:0 auto;color:#111;">
+    <h1 style="font-size:22px;margin-bottom:4px;">${t.heading}</h1>
+    <p style="color:#555;">${t.intro(amountLabel)}</p>
+    <p style="color:#888;font-size:13px;">${t.orderRef}: <strong>${ref}</strong></p>
+    <p style="margin-top:32px;color:#888;font-size:13px;">${t.footer}</p>
+  </div>`;
+
+  return { subject: t.subject(ref), html };
+}
+
 export interface SupportTicketEmailData {
   name: string;
   email: string;

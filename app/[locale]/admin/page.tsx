@@ -4,12 +4,13 @@ import { createClient } from "@/lib/supabase/server";
 const MANAGEMENT_LINKS = [
   { href: "/admin/products", label: "Products" },
   { href: "/admin/categories", label: "Categories" },
+  { href: "/admin/orders", label: "Orders" },
   { href: "/admin/content/home", label: "Home page content" },
   { href: "/admin/content/our-story", label: "Our Story content" },
   { href: "/admin/stats", label: "Statistics" },
 ];
 
-const COMING_LATER = ["Orders", "Customers", "Settings"];
+const COMING_LATER = ["Customers", "Settings"];
 
 export default async function AdminPage() {
   const supabase = await createClient();
