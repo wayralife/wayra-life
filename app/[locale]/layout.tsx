@@ -5,6 +5,7 @@ import { routing } from "@/i18n/routing";
 import { CartProvider } from "@/lib/cart-context";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageViewTracker from "@/components/PageViewTracker";
 import "../globals.css";
 
 export const metadata: Metadata = {
@@ -34,6 +35,7 @@ export default async function LocaleLayout({
       <body className="min-h-screen bg-white text-black antialiased">
         <NextIntlClientProvider>
           <CartProvider>
+            <PageViewTracker />
             <div className="flex min-h-screen flex-col">
               <Header />
               <main className="flex-1">{children}</main>

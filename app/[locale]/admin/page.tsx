@@ -6,6 +6,7 @@ const MANAGEMENT_LINKS = [
   { href: "/admin/categories", label: "Categories" },
   { href: "/admin/content/home", label: "Home page content" },
   { href: "/admin/content/our-story", label: "Our Story content" },
+  { href: "/admin/stats", label: "Statistics" },
 ];
 
 const COMING_LATER = ["Orders", "Customers", "Settings"];
